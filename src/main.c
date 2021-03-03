@@ -1,6 +1,6 @@
 #include "../inc/sender.h"
 
-int main(int argc, char **argv)
+int		main(int argc, char **argv)
 {
 	t_data_info	*data;
 	time_t now;
@@ -28,10 +28,15 @@ int main(int argc, char **argv)
 
 	char s_filename[sizeof("JJ_MM_AAAA__HH_MM_SS.json")];
 	strftime(s_filename, sizeof(s_filename), "%d_%m_%Y__%H_%M_%S.json", &tm_now);
-
-
-	write_json(data, s_filename);
-
-
+	if (argc > 1)
+	{
+		char s_filepath[sizeof(s_filename) + strlen(argv[1])];
+		sprintf(s_filepath, "%s/%s", argv[1], s_filename);
+		write_json(data, s_filepath);
+	}
+	else
+	{
+		write_json(data, s_filename);
+	}
 	printf("Hello World !\n");
 }

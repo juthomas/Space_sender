@@ -6,6 +6,7 @@
 # include <math.h>
 # include <time.h>
 # include <unistd.h>
+# include <string.h>
 # define SAMPLES_NU 10
 # define SAMPLE_RATE 1 //RATE LOOP IN SECONDS
 

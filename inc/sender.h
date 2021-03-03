@@ -4,8 +4,10 @@
 # include <stdint.h>
 # include <stdlib.h>
 # include <math.h>
+# include <time.h>
+# include <unistd.h>
 # define SAMPLES_NU 10
-# define SAMPLE_RATE 500
+# define SAMPLE_RATE 5 //RATE LOOP IN SECONDS
 
 enum			e_data_type
 {
@@ -36,9 +38,9 @@ static const t_data	g_datas[DATAS_SIZE] = {
 typedef struct	s_data_info
 {
 	t_data		*datas;
-	int32_t		delay_time;
+	char		*time;
 }				t_data_info;
 
-void	write_json(t_data_info	*data);
+void	write_json(t_data_info	*data, char *filename);
 
 #endif

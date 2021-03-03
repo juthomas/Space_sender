@@ -1,6 +1,6 @@
 #include "../inc/sender.h"
 
-int main()
+int main(int argc, char **argv)
 {
 	t_data_info	*data;
 	time_t now;
@@ -21,6 +21,7 @@ int main()
 		char s_now[sizeof("JJ/MM/AAAA HH:MM:SS")];
 		strftime(s_now, sizeof(s_now), "%d/%m/%Y %H:%M:%S", &tm_now);
 		data[i].time = s_now;
+		printf("Sample n°%d/%d acquired\n", i + 1, SAMPLES_NU);
 		sleep(SAMPLE_RATE);
 	}
 

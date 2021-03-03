@@ -7,7 +7,7 @@
 # include <time.h>
 # include <unistd.h>
 # define SAMPLES_NU 10
-# define SAMPLE_RATE 5 //RATE LOOP IN SECONDS
+# define SAMPLE_RATE 1 //RATE LOOP IN SECONDS
 
 enum			e_data_type
 {

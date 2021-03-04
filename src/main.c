@@ -1,10 +1,34 @@
 #include "../inc/sender.h"
+#include <signal.h>
 
-int main(int argc, char **argv)
+void	usage()
+{
+	printf("Usage : ");
+	printf("data_sender \"Path/To/Destination/Folder\"\n");
+}
+
+int		main(int argc, char **argv)
 {
 	t_data_info *data;
 	time_t now;
 	struct tm tm_now;
+
+	pid_t pid = fork();
+	printf("PID : %d\n", pid);
+
+	if (pid == 0)
+	{
+		printf("Hola !\n");
+
+		execl("useless", "useless");
+
+		exit(1);
+	}
+	sleep(1);
+	kill(pid, SIGTERM);
+	sleep(1);
+	kill(pid, SIGSTOP);
+	// kill(pid, SIGKILL);SIGSTOP
 
 	//Memory Allocation
 	data = (t_data_info *)malloc(sizeof(t_data_info) * SAMPLES_NU);

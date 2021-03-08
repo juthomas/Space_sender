@@ -51,16 +51,16 @@ int		main(int argc, char **argv)
 			}
 			now = time(NULL);
 			tm_now = *localtime(&now);
-			char s_now[sizeof("JJ/MM/AAAA HH:MM:SS")];
-			strftime(s_now, sizeof(s_now), "%d/%m/%Y %H:%M:%S", &tm_now);
+			char s_now[sizeof("AAAA/MM/JJ HH:MM:SS")];
+			strftime(s_now, sizeof(s_now), "%Y/%m/%d %H:%M:%S", &tm_now);
 			data[i].time = s_now;
 			printf("Sample n°%d/%d acquired\n", i + 1, SAMPLES_NU);
 			sleep(SAMPLE_RATE);
 		}
 
 		//Files Saving
-		char s_filename[sizeof("JJ_MM_AAAA__HH_MM_SS.json")];
-		strftime(s_filename, sizeof(s_filename), "%d_%m_%Y__%H_%M_%S.json", &tm_now);
+		char s_filename[sizeof("AAAA_MM_JJ__HH_MM_SS.json")];
+		strftime(s_filename, sizeof(s_filename), "%Y_%m_%d__%H_%M_%S.json", &tm_now);
 		if (argc > 1)
 		{
 			char s_filepath[sizeof(s_filename) + strlen(argv[1])];

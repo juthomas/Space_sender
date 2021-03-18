@@ -53,7 +53,9 @@ int		main(int argc, char **argv)
 			tm_now = *localtime(&now);
 			char s_now[sizeof("AAAA/MM/JJ HH:MM:SS")];
 			strftime(s_now, sizeof(s_now), "%Y/%m/%d %H:%M:%S", &tm_now);
-			data[i].time = s_now;
+			data[i].time = strdup(s_now);
+
+			// printf("Time : %s\n", s_now);
 			printf("Sample n°%d/%d acquired\n", i + 1, SAMPLES_NU);
 			sleep(SAMPLE_RATE);
 		}
@@ -77,6 +79,7 @@ int		main(int argc, char **argv)
 	//Freeing Memory
 	for (int i = 0; i < SAMPLES_NU; i++)
 	{
+		free(data[i].time);
 		free(data[i].datas);
 	}
 	free(data);

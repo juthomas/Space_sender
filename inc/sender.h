@@ -9,7 +9,7 @@
 # include <string.h>
 # define SAMPLES_NU 10
 # define SAMPLE_RATE 1 //RATE LOOP IN SECONDS
-# define FILES_NU 3
+# define FILES_NU 10
 
 enum			e_data_type
 {

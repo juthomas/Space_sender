@@ -20,14 +20,11 @@ int		main(int argc, char **argv)
 	{
 		printf("Hola !\n");
 
-		execl("useless", "useless");
+		execl("../midiWritingInC/midi_controller", "../midiWritingInC/midi_controller");
 
 		exit(1);
 	}
-	sleep(1);
-	kill(pid, SIGTERM);
-	sleep(1);
-	kill(pid, SIGSTOP);
+
 	// kill(pid, SIGKILL);SIGSTOP
 
 	//Memory Allocation
@@ -65,7 +62,7 @@ int		main(int argc, char **argv)
 		strftime(s_filename, sizeof(s_filename), "%Y_%m_%d__%H_%M_%S.json", &tm_now);
 		if (argc > 1)
 		{
-			char s_filepath[sizeof(s_filename) + strlen(argv[1])];
+			char s_filepath[sizeof(s_filename) + strlen(argv[1]) + 1];
 			sprintf(s_filepath, "%s/%s", argv[1], s_filename);
 			write_json(data, s_filepath);
 		}
@@ -84,4 +81,8 @@ int		main(int argc, char **argv)
 	}
 	free(data);
 	printf("End Of Program !\n");
+		sleep(1);
+	kill(pid, SIGTERM);
+	sleep(1);
+	kill(pid, SIGSTOP);
 }

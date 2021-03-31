@@ -21,9 +21,10 @@ DEBUG = -g # -fsanitize=address
 WARNINGS = -Wall -Wextra -Werror
 FLAGS = $(WARNINGS) $(FAST) $(DEBUG)# -D_REENTRANT
 
-INC = $(INC_DIR:%=-I./%)
+INC = $(INC_DIR:%=-I./%) -lm 
 
-CC = clang $(FLAGS) $(INC)
+#CC = clang $(FLAGS) $(INC)
+CC = gcc $(FLAGS) $(INC)
 
 ## List of Headers and C files 
 

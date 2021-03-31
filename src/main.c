@@ -1,5 +1,4 @@
 #include "../inc/sender.h"
-#include <signal.h>
 
 void	usage()
 {
@@ -20,7 +19,7 @@ int		main(int argc, char **argv)
 	{
 		printf("Hola !\n");
 
-		execl("../midiWritingInC/midi_controller", "../midiWritingInC/midi_controller");
+		execl("../Space_MIDI/midi_controller", "midi_controller", NULL);
 
 		exit(1);
 	}

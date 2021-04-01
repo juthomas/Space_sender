@@ -48,7 +48,7 @@ int		main(int argc, char **argv)
 			}
 			now = time(NULL);
 			tm_now = *localtime(&now);
-			char s_now[sizeof("AAAA/MM/JJ HH:MM:SS")];
+			char s_now[sizeof("AAAA/mm/JJ HH:MM:SS")];
 			strftime(s_now, sizeof(s_now), "%Y/%m/%d %H:%M:%S", &tm_now);
 			data[i].time = strdup(s_now);
 
@@ -58,7 +58,7 @@ int		main(int argc, char **argv)
 		}
 
 		//Files Saving
-		char s_filename[sizeof("AAAA_MM_JJ__HH_MM_SS.json")];
+		char s_filename[sizeof("AAAA_mm_JJ__HH_MM_SS.json")];
 		strftime(s_filename, sizeof(s_filename), "%Y_%m_%d__%H_%M_%S.json", &tm_now);
 		if (argc > 1)
 		{

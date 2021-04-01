@@ -19,7 +19,8 @@ int		main(int argc, char **argv)
 	{
 		printf("Hola !\n");
 
-		execl("../Space_MIDI/midi_controller", "midi_controller", NULL);
+		execl("../Space_MIDI/midi_controller", "midi_controller",\
+		 "../Space_MIDI/data_files", "../Space_MIDI/midi_files", NULL);
 
 		exit(1);
 	}

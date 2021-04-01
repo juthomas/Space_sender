@@ -44,7 +44,18 @@ int		main(int argc, char **argv)
 			for (int u = 0; u < DATAS_SIZE; u++)
 			{
 				data[i].datas[u] = g_datas[u];
-				data[i].datas[u].float_data += fmod((float)rand() / 13., data[i].datas[u].float_delta) - (data[i].datas[u].float_delta / 2);
+				if (data[i].datas[u].data_type == FLOATING)
+				{
+					data[i].datas[u].float_data += fmod((float)rand() / 13., data[i].datas[u].float_delta * 2) - (data[i].datas[u].float_delta);
+				}
+				else if (data[i].datas[u].data_type == INTEGER)
+				{
+					data[i].datas[u].int_data += (rand() % data[i].datas[u].int_delta * 2) - data[i].datas[u].int_delta;
+				}
+				else if (data[i].datas[u].data_type == BINARY)
+				{
+					data[i].datas[u].binary += rand() % 2;
+				}
 			}
 			now = time(NULL);
 			tm_now = *localtime(&now);

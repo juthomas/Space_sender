@@ -31,7 +31,7 @@ int		main(int argc, char **argv)
 	time_t now;
 	struct tm tm_now;
 	char *data_file_path;// = "../Space_MIDI/data_files";
-	data_file_path = (char*)malloc(sizeof(char) * 100);
+	data_file_path = (char*)malloc(sizeof(char) * (sizeof("../Space_MIDI/data_files/") + 1));
 	data_file_path = strcpy(data_file_path, "../Space_MIDI/data_files/");
 
 	pid_t pid = fork();

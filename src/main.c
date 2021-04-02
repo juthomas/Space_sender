@@ -6,18 +6,40 @@ void	usage()
 	printf("data_sender \"Path/To/Destination/Folder\"\n");
 }
 
+/**
+  * @brief Create file path if doesnt exists
+  * @param [file_path] File path /!\ cant be const /!\
+  * @param [mode] Permission bit masks for mode
+*/
+int make_path(char* file_path, mode_t mode) {
+	for (char* p = strchr(file_path + 1, '/'); p; p = strchr(p + 1, '/')) {
+		*p = '\0';
+		if (mkdir(file_path, mode) == -1) {
+			if (errno != EEXIST) {
+				*p = '/';
+				return -1;
+			}
+		}
+		*p = '/';
+	}
+	return 0;
+}
+
 int		main(int argc, char **argv)
 {
 	t_data_info *data;
 	time_t now;
 	struct tm tm_now;
+	char *data_file_path;// = "../Space_MIDI/data_files";
+	data_file_path = (char*)malloc(sizeof(char) * 100);
+	data_file_path = strcpy(data_file_path, "../Space_MIDI/data_files/");
 
 	pid_t pid = fork();
 	printf("PID : %d\n", pid);
+	make_path(data_file_path, 0755);
 
 	if (pid == 0)
 	{
-		printf("Hola !\n");
 
 		execl("../Space_MIDI/midi_controller", "midi_controller",\
 		 "../Space_MIDI/data_files", "../Space_MIDI/midi_files", NULL);

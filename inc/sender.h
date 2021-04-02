@@ -8,10 +8,13 @@
 # include <unistd.h>
 # include <string.h>
 # include <signal.h>
+# include <errno.h>
+# include <sys/stat.h>
 # define SAMPLES_NU 10
 # define SAMPLE_RATE 1 //RATE LOOP IN SECONDS
 # define FILES_NU 10
 
+int errno;
 enum			e_data_type
 {
 	INTEGER = 0,

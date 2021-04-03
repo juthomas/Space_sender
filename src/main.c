@@ -79,7 +79,7 @@ int		main(int argc, char **argv)
 		  *  "../Space_MIDI/data_files", "../Space_MIDI/midi_files", NULL);
 		*/
 	
-		execl("../Space_MIDI/midi_controller", "midi_controller",\
+		execl("./Space_MIDI/midi_controller", "midi_controller",\
 		 data_file_path, midi_file_path, NULL);
 
 		exit(1);

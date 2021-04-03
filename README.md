@@ -23,3 +23,5 @@ change <br/>
 `[13] # define SAMPLES_NU 10 //NUMBER OF SAMPLES IN FILES` <br/>
 `[14] # define SAMPLE_RATE 1 //RATE LOOP IN SECONDS` <br/>
 `[15] # define FILES_NU 10 //NUMBER OF FILES` 
+
+by default it's a 100 seconds test (10 * 10 * 1)

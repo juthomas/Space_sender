@@ -15,7 +15,7 @@
 or <br/>
 `./data_sender [path to data files] [path to midi files]` 
 
-# modification of the tester configuration
+# Modification of the tester configuration
 
 in <br/>
 `inc/sender.h` <br/>
@@ -25,3 +25,6 @@ change <br/>
 `[15] # define FILES_NU 10 //NUMBER OF FILES` 
 
 by default it's a 100 seconds test (10 * 10 * 1)
+
+# Update git submodule
+`git submodule update --remote Space_MIDI`

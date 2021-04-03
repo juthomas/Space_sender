@@ -15,6 +15,7 @@ void	write_json(t_data_info	*data, char *filename)
 	{
 		fprintf(file_ptr, "\t\t{\n");
 		fprintf(file_ptr, "\t\t\t\"Time\" : \"%s\",\n", data[i].time);
+		// free(data[i].time);
 		for (int u = 0; u < DATAS_SIZE; u++)
 		{
 			if (data[i].datas[u].data_type == FLOATING)

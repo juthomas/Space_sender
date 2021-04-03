@@ -10,11 +10,13 @@
 # include <signal.h>
 # include <errno.h>
 # include <sys/stat.h>
-# define SAMPLES_NU 10
+# define SAMPLES_NU 10 //NUMBER OF SAMPLES IN FILES
 # define SAMPLE_RATE 1 //RATE LOOP IN SECONDS
-# define FILES_NU 10
+# define FILES_NU 10 //NUMBER OF FILES
 
+pid_t g_pid;
 int errno;
+
 enum			e_data_type
 {
 	INTEGER = 0,

@@ -1,0 +1,3 @@
+[submodule "Space_MIDI"]
+	path = Space_MIDI
+	url = https://github.com/juthomas/Space_MIDI.git

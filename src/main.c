@@ -153,8 +153,7 @@ int		main(int argc, char **argv)
 		free(data[i].datas);
 	}
 	free(data);
-	printf("End Of Program !\n");
-		sleep(1);
+	sleep(1);
 	kill(g_pid, SIGTERM);
 	sleep(1);
 	kill(g_pid, SIGSTOP);

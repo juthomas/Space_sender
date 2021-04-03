@@ -25,7 +25,7 @@ FLAGS = $(WARNINGS) $(FAST) $(DEBUG)# -D_REENTRANT
 #Warning for -lm flag is normal on OS X
 INC = $(INC_DIR:%=-I./%) -lm 
 
-#CC = clang $(FLAGS) $(INC)
+# CC = clang $(FLAGS) $(INC)
 CC = gcc $(FLAGS) $(INC)
 
 ## List of Headers and C files 
@@ -63,16 +63,19 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INCLUDES)
 	@echo "$(COLOR)$@ \033[100D\033[40C\0033[1;32m[Compiled]\0033[1;37m"
 
 $(NAME): $(OBJ_DIRS) $(SRC) $(INCLUDES)
+	@make -C ./Space_MIDI
 	@$(MAKE) -s -j $(OBJ)
 	@echo "$(COLOR)Objects \033[100D\033[40C\0033[1;32m[Created]\0033[1;37m"
 	@$(CC) $(OBJ) -o $@
 	@echo "$(COLOR)$(NAME) \033[100D\033[40C\0033[1;32m[Created]\0033[1;37m"
 
 clean:
+	@make clean -C ./Space_MIDI
 	@rm -rf $(OBJ_DIR)
 	@echo "$(COLOR)Objects \033[100D\033[40C\0033[1;31m[Removed]\0033[1;37m"
 
 fclean: clean
+	@make fclean -C ./Space_MIDI
 	@rm -f $(NAME)
 	@echo "$(COLOR)$(NAME) \033[100D\033[40C\0033[1;31m[Removed]\0033[1;37m"
 

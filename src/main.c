@@ -49,7 +49,9 @@ int		main(int argc, char **argv)
 	struct tm tm_now;
 	char *data_file_path;// = "../Space_MIDI/data_files";
 	char *midi_file_path;
-
+	// printf("%lu, %lu\n", sizeof(g_all_data), sizeof(t_data*));
+	// printf("%f", g_all_data[1][15].float_delta);
+	// return(0);
 
 	if (argc == 3)
 	{
@@ -97,27 +99,77 @@ int		main(int argc, char **argv)
 		data[i].datas = (t_data *)malloc(sizeof(t_data) * DATAS_SIZE);
 	}
 
+
+	int max_steps = FILES_NU * SAMPLES_NU; // 20
+	int current_step = 0;
+
+	int number_of_data_steps = (sizeof(g_all_data) / sizeof(t_data*)) - 1 ;
+
+	int current_data_step_min = 0;
+	int current_data_step_max = 0;
+
+
+
 	//Writing Eatch File
 	for (int current_file = 0; current_file < FILES_NU; current_file++)
 	{
 
 		//Data Feeding
-		for (int i = 0; i < SAMPLES_NU; i++)
+		for (int i = 0; i < SAMPLES_NU; i++, current_step++)
 		{
+			int n = 1;
+			while (!(((max_steps / number_of_data_steps) * (n - 1) <= current_step)
+			&& ((max_steps / number_of_data_steps) * (n) > current_step)))
+			{
+				// printf("In the while, %d\n", n);
+				// printf("n-1 gloal : %d\n", (max_steps / number_of_data_steps) * (n - 1));
+				// printf("n gloal : %d\n", (max_steps / number_of_data_steps) * (n));
+				// printf("current step : %d\n", current_step);
+				n++;
+			}
+			float duty;
+			current_data_step_min = (max_steps / number_of_data_steps) * (n - 1);
+			current_data_step_max = (max_steps / number_of_data_steps) * (n);
+
+			duty = ((float)current_step - current_data_step_min) / (current_data_step_max - current_data_step_min);
+			printf("N : %d, duty : %f\n",n, duty);
+			printf("step min : %d\n",current_data_step_min);
+			printf("step max : %d\n",current_data_step_max);
+			printf("current step : %d\n\n", current_step);
+
+
 			for (int u = 0; u < DATAS_SIZE; u++)
 			{
-				data[i].datas[u] = g_datas[u];
+				// data[i].datas[u] = g_datas[u];
+				data[i].datas[u] = g_all_data[n - 1][u];
+
+
 				if (data[i].datas[u].data_type == FLOATING)
 				{
-					data[i].datas[u].float_data += fmod((float)rand() / 13., data[i].datas[u].float_delta * 2) - (data[i].datas[u].float_delta);
+					data[i].datas[u].float_data = g_all_data[n - 1][u].float_data * (1-duty) + g_all_data[n][u].float_data * duty;
+					float tmpdelta = g_all_data[n - 1][u].float_delta * (1-duty) + g_all_data[n][u].float_delta * duty;
+					if (tmpdelta > 0)
+					{
+						data[i].datas[u].float_data += fmod((float)rand() / 13., tmpdelta * 2) - (tmpdelta);
+					}
+					if (u == 0)
+					{
+						printf("%s : %f\n", data[i].datas[u].name,data[i].datas[u].float_data);
+						// printf("tmpdelta : ")
+					}
 				}
 				else if (data[i].datas[u].data_type == INTEGER)
 				{
-					data[i].datas[u].int_data += (rand() % data[i].datas[u].int_delta * 2) - data[i].datas[u].int_delta;
+					data[i].datas[u].int_data = (float)g_all_data[n - 1][u].int_data * (1-duty) + g_all_data[n][u].int_data * duty;
+					int tmpdelta = (float)g_all_data[n - 1][u].int_delta * (1-duty) + g_all_data[n][u].int_delta * duty;
+					if (tmpdelta > 0)
+					{
+						data[i].datas[u].int_data += (rand() % (tmpdelta * 2)) - tmpdelta;
+					}
 				}
 				else if (data[i].datas[u].data_type == BINARY)
 				{
-					data[i].datas[u].binary += rand() % 2;
+					// data[i].datas[u].binary += rand() % 2;
 				}
 			}
 			now = time(NULL);

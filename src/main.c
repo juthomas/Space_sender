@@ -50,6 +50,7 @@ int		main(int argc, char **argv)
 	char *data_file_path;// = "../Space_MIDI/data_files";
 	char *midi_file_path;
 
+
 	if (argc == 3)
 	{
 		data_file_path = (char*)malloc(sizeof(char) * (strlen(argv[1]) + 2));
@@ -59,11 +60,11 @@ int		main(int argc, char **argv)
 	}
 	else
 	{
-		data_file_path = (char*)malloc(sizeof(char) * (sizeof("./Space_MIDI/data_files/") + 1));
-		data_file_path = strcpy(data_file_path, "./Space_MIDI/data_files/");
+		data_file_path = (char*)malloc(sizeof(char) * (sizeof("../Space_MIDI/data_files/") + 1));
+		data_file_path = strcpy(data_file_path, "../Space_MIDI/data_files/");
 		
-		midi_file_path = (char*)malloc(sizeof(char) * (sizeof("./Space_MIDI/midi_files/") + 1));
-		midi_file_path = strcpy(midi_file_path, "./Space_MIDI/midi_files/");
+		midi_file_path = (char*)malloc(sizeof(char) * (sizeof("../Space_MIDI/midi_files/") + 1));
+		midi_file_path = strcpy(midi_file_path, "../Space_MIDI/midi_files/");
 	}
 
 
@@ -79,7 +80,7 @@ int		main(int argc, char **argv)
 		  *  "../Space_MIDI/data_files", "../Space_MIDI/midi_files", NULL);
 		*/
 	
-		execl("./Space_MIDI/midi_controller", "midi_controller",\
+		execl("../Space_MIDI/midi_controller", "midi_controller",\
 		 data_file_path, midi_file_path, NULL);
 
 		exit(1);

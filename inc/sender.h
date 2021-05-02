@@ -12,7 +12,7 @@
 # include <sys/stat.h>
 # define SAMPLES_NU 10 //NUMBER OF SAMPLES IN FILES
 # define SAMPLE_RATE 1 //RATE LOOP IN SECONDS
-# define FILES_NU 10 //NUMBER OF FILES
+# define FILES_NU 9 //NUMBER OF FILES
 
 pid_t g_pid;
 int errno;
@@ -68,6 +68,14 @@ static const t_data	g_datas[] = {
 (t_data){.name = "Spectrum", .data_type = INTEGER, .int_data = 10000, .int_delta = 10000},
 (t_data){.name = "Organ", .data_type = FLOATING, .float_data = 2.5, .float_delta = 2.5}
 };
+
+static const t_data *g_all_data[] = {
+	(t_data[]){
+		(t_data){.name = "Organ", .data_type = FLOATING, .float_data = 2.5, .float_delta = 2.5}
+	}
+};
+
+
 
 typedef struct	s_data_info
 {

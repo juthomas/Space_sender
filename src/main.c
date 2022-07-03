@@ -32,6 +32,7 @@ int make_path(char* file_path, mode_t mode) {
 */
 void close_child(int signal)
 {
+	printf("Killing child\n");
 	(void)signal;
 	kill(g_pid, SIGINT);
 	exit(0);
@@ -135,7 +136,7 @@ int		main(int argc, char **argv)
 			printf("N : %d, duty : %f\n",n, duty);
 			printf("step min : %d\n",current_data_step_min);
 			printf("step max : %d\n",current_data_step_max);
-			printf("current step : %d\n\n", current_step);
+			printf("current step : %d/%d\n\n", current_step, SAMPLES_NU * FILES_NU);
 
 
 			for (int u = 0; u < DATAS_SIZE; u++)
@@ -152,11 +153,11 @@ int		main(int argc, char **argv)
 					{
 						data[i].datas[u].float_data += fmod((float)rand() / 13., tmpdelta * 2) - (tmpdelta);
 					}
-					if (u == 0)
-					{
-						printf("%s : %f\n", data[i].datas[u].name,data[i].datas[u].float_data);
-						// printf("tmpdelta : ")
-					}
+					// if (u == 0)
+					// {
+					// 	printf("%s : %f\n", data[i].datas[u].name,data[i].datas[u].float_data);
+					// 	// printf("tmpdelta : ")
+					// }
 				}
 				else if (data[i].datas[u].data_type == INTEGER)
 				{
@@ -210,4 +211,6 @@ int		main(int argc, char **argv)
 	kill(g_pid, SIGTERM);
 	sleep(1);
 	kill(g_pid, SIGSTOP);
+	kill(g_pid, SIGINT);
+
 }

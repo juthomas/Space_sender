@@ -18,7 +18,7 @@
 
 #include <sys/types.h>
 
-#define SAMPLES_NU 10 // NUMBER OF SAMPLES IN FILES
+#define SAMPLES_NU 100 // NUMBER OF SAMPLES IN FILES
 #define SAMPLE_RATE 1 // RATE LOOP IN SECONDS
 // #define FILES_NU 10	  // NUMBER OF FILES
 
@@ -97,7 +97,7 @@ struct shmseg
 	char buf[sizeof(t_circular_buffer)];
 };
 
-#define DATAS_SIZE 33
+#define DATAS_SIZE 32
 
 static const t_data g_datas[] = {
 	(t_data){.name = "Photodiode_1", .data_type = INTEGER, .int_data = 2048, .int_delta = 2048},

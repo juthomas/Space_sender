@@ -110,7 +110,7 @@ int main(int argc, char **argv)
 	struct shmseg *shmp;
 	char *bufptr;
 	//    int spaceavailable;
-	shmid = shmget(SHM_KEY, 3000, 0644 | IPC_CREAT);
+	shmid = shmget(SHM_KEY, sizeof(struct shmseg), 0644 | IPC_CREAT);
 
 	if (shmid == -1)
 	{
@@ -153,7 +153,7 @@ int main(int argc, char **argv)
 		// buffer = (t_circular_buffer *)shmp->buf;
 
 	// bzero(buffer, sizeof(t_circular_buffer));
-	buffer->buffer_rounds = 42;
+	// buffer->buffer_rounds = 42;
 	buffer->older_block = 43;
 
 

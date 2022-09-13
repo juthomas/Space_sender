@@ -18,11 +18,11 @@
 
 #include <sys/types.h>
 
-#define SAMPLES_NU 100 // NUMBER OF SAMPLES IN FILES
+#define SAMPLES_NU 300 // NUMBER OF SAMPLES IN FILES
 #define SAMPLE_RATE 1 // RATE LOOP IN SECONDS
 // #define FILES_NU 10	  // NUMBER OF FILES
 
-#define SHM_KEY 0x1237
+#define SHM_KEY 0x1240
 
 pid_t g_pid;
 int errno;
@@ -83,11 +83,11 @@ typedef struct s_data
 	uint8_t binary;
 } t_data;
 
+#define BUFFER_ROUNDS 42
 typedef struct s_circular_buffer
 {
-	int16_t buffer_rounds;
 	int16_t older_block;
-	t_sensors data[10];
+	t_sensors data[BUFFER_ROUNDS];
 } t_circular_buffer;
 
 struct shmseg
@@ -169,7 +169,7 @@ static const t_data *g_all_data[] = {
 		(t_data){.name = "Organ_5", .offset = offsetof(t_sensors, organ_5), .data_type = INTEGER, .int_data = 512, .int_delta = 512},
 		(t_data){.name = "Organ_6", .offset = offsetof(t_sensors, organ_6), .data_type = INTEGER, .int_data = 512, .int_delta = 512}},
 	(t_data[]){
-		(t_data){.name = "Photodiode_1", .offset = offsetof(t_sensors, photodiode_1), .data_type = INTEGER, .int_data = 2048, .int_delta = 2048},
+		(t_data){.name = "Photodiode_1", .offset = offsetof(t_sensors, photodiode_1), .data_type = INTEGER, .int_data = 2048, .int_delta = 48},
 		(t_data){.name = "Photodiode_2", .offset = offsetof(t_sensors, photodiode_2), .data_type = INTEGER, .int_data = 2048, .int_delta = 2048},
 		(t_data){.name = "Photodiode_3", .offset = offsetof(t_sensors, photodiode_3), .data_type = INTEGER, .int_data = 2048, .int_delta = 2048},
 		(t_data){.name = "Photodiode_4", .offset = offsetof(t_sensors, photodiode_4), .data_type = INTEGER, .int_data = 2048, .int_delta = 2048},
@@ -202,7 +202,7 @@ static const t_data *g_all_data[] = {
 		(t_data){.name = "Organ_5", .offset = offsetof(t_sensors, organ_5), .data_type = INTEGER, .int_data = 512, .int_delta = 512},
 		(t_data){.name = "Organ_6", .offset = offsetof(t_sensors, organ_6), .data_type = INTEGER, .int_data = 512, .int_delta = 512}},
 	(t_data[]){
-		(t_data){.name = "Photodiode_1", .offset = offsetof(t_sensors, photodiode_1), .data_type = INTEGER, .int_data = 2048, .int_delta = 2048},
+		(t_data){.name = "Photodiode_1", .offset = offsetof(t_sensors, photodiode_1), .data_type = INTEGER, .int_data = 3048, .int_delta = 48},
 		(t_data){.name = "Photodiode_2", .offset = offsetof(t_sensors, photodiode_2), .data_type = INTEGER, .int_data = 2048, .int_delta = 2048},
 		(t_data){.name = "Photodiode_3", .offset = offsetof(t_sensors, photodiode_3), .data_type = INTEGER, .int_data = 2048, .int_delta = 2048},
 		(t_data){.name = "Photodiode_4", .offset = offsetof(t_sensors, photodiode_4), .data_type = INTEGER, .int_data = 2048, .int_delta = 2048},
@@ -235,7 +235,7 @@ static const t_data *g_all_data[] = {
 		(t_data){.name = "Organ_5", .offset = offsetof(t_sensors, organ_5), .data_type = INTEGER, .int_data = 512, .int_delta = 512},
 		(t_data){.name = "Organ_6", .offset = offsetof(t_sensors, organ_6), .data_type = INTEGER, .int_data = 512, .int_delta = 512}},
 	(t_data[]){
-		(t_data){.name = "Photodiode_1", .offset = offsetof(t_sensors, photodiode_1), .data_type = INTEGER, .int_data = 2048, .int_delta = 2048},
+		(t_data){.name = "Photodiode_1", .offset = offsetof(t_sensors, photodiode_1), .data_type = INTEGER, .int_data = 3848, .int_delta = 48},
 		(t_data){.name = "Photodiode_2", .offset = offsetof(t_sensors, photodiode_2), .data_type = INTEGER, .int_data = 2048, .int_delta = 2048},
 		(t_data){.name = "Photodiode_3", .offset = offsetof(t_sensors, photodiode_3), .data_type = INTEGER, .int_data = 2048, .int_delta = 2048},
 		(t_data){.name = "Photodiode_4", .offset = offsetof(t_sensors, photodiode_4), .data_type = INTEGER, .int_data = 2048, .int_delta = 2048},

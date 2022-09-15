@@ -1,6 +1,7 @@
 # Clone with submodules
 
 `git clone --recurse-submodules https://github.com/juthomas/Space_sender.git`
+`git clone --recurse-submodules git@github.com:juthomas/Space_sender.git`
 
 
 # Build

@@ -49,7 +49,6 @@ void close_child(int signal)
 int main(int argc, char **argv)
 {
 	time_t now;
-	struct tm tm_now;
 	char *data_file_path; // = "../Space_MIDI/data_files";
 	char *midi_file_path;
 
@@ -93,7 +92,7 @@ int main(int argc, char **argv)
 
 	buffer = (t_circular_buffer *)malloc(sizeof(t_circular_buffer));
 
-	int shmid, numtimes;
+	int shmid;
 	struct shmseg *shmp;
 	char *bufptr;
 	shmid = shmget(SHM_KEY, sizeof(struct shmseg), 0644 | IPC_CREAT);

@@ -1,4 +1,5 @@
 #include "../inc/sender.h"
+pid_t g_pid;
 
 void usage()
 {

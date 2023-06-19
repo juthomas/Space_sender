@@ -49,7 +49,6 @@ void close_child(int signal)
  */
 int main(int argc, char **argv)
 {
-	time_t now;
 	char *data_file_path; // = "../Space_MIDI/data_files";
 	char *midi_file_path;
 
@@ -95,7 +94,6 @@ int main(int argc, char **argv)
 
 	int shmid;
 	struct shmseg *shmp;
-	char *bufptr;
 	shmid = shmget(SHM_KEY, sizeof(struct shmseg), 0644 | IPC_CREAT);
 
 	if (shmid == -1)
@@ -113,7 +111,6 @@ int main(int argc, char **argv)
 		return 1;
 	}
 
-	bufptr = shmp->buf;
 
 	int max_steps = SAMPLES_NU;
 	int current_step = 0;
@@ -170,7 +167,6 @@ int main(int argc, char **argv)
 				*ptr = g_all_data[n][u].binary;
 			}
 		}
-		now = time(NULL);
 
 		buffer->data[buffer_index].timestamp = time(NULL);
 

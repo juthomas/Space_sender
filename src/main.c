@@ -7,7 +7,7 @@ struct sembuf V = {0, 1, SEM_UNDO};	 // Opération V (signal)
 void usage()
 {
 	printf("Usage : ");
-	printf("data_sender \"Path/To/Destination/Folder\" \"Parg/To/Midi/Folder\"\n");
+	printf("data_sender \"Path/To/Midi/Folder_Redundancy\" \"Path/To/Midi/Folder\"\n");
 	exit(0);
 }
 
@@ -52,28 +52,28 @@ void close_child(int signal)
  */
 int main(int argc, char **argv)
 {
-	char *data_file_path; // = "../Space_MIDI/data_files";
-	char *midi_file_path;
+	char *midi_file_path; // = "../Space_MIDI/data_files";
+	char *midi_file_path_redundancy;
 
 	if (argc == 3)
 	{
-		data_file_path = (char *)malloc(sizeof(char) * (strlen(argv[1]) + 2));
-		sprintf(data_file_path, "%s/", argv[1]);
-		midi_file_path = (char *)malloc(sizeof(char) * (strlen(argv[2]) + 2));
-		sprintf(midi_file_path, "%s/", argv[2]);
+		midi_file_path = (char *)malloc(sizeof(char) * (strlen(argv[1]) + 2));
+		sprintf(midi_file_path, "%s/", argv[1]);
+		midi_file_path_redundancy = (char *)malloc(sizeof(char) * (strlen(argv[2]) + 2));
+		sprintf(midi_file_path_redundancy, "%s/", argv[2]);
 	}
 	else
 	{
-		data_file_path = (char *)malloc(sizeof(char) * (sizeof("./Space_MIDI/data_files/") + 1));
-		data_file_path = strcpy(data_file_path, "./Space_MIDI/data_files/");
+		midi_file_path = (char *)malloc(sizeof(char) * (sizeof("./Space_MIDI/data_files/") + 1));
+		midi_file_path = strcpy(midi_file_path, "./Space_MIDI/data_files/");
 
-		midi_file_path = (char *)malloc(sizeof(char) * (sizeof("./Space_MIDI/midi_files/") + 1));
-		midi_file_path = strcpy(midi_file_path, "./Space_MIDI/midi_files/");
+		midi_file_path_redundancy = (char *)malloc(sizeof(char) * (sizeof("./Space_MIDI/midi_files_redundancy/") + 1));
+		midi_file_path_redundancy = strcpy(midi_file_path_redundancy, "./Space_MIDI/midi_files_redundancy/");
 	}
 
 	g_pid = fork();
 	printf("PID : %d\n", g_pid);
-	make_path(data_file_path, 0755);
+	make_path(midi_file_path, 0755);
 
 	if (g_pid == 0)
 	{
@@ -84,7 +84,7 @@ int main(int argc, char **argv)
 		 */
 
 		execl("./Space_MIDI/midi_controller", "midi_controller",
-			  data_file_path, midi_file_path, NULL);
+			  midi_file_path, midi_file_path_redundancy, NULL);
 
 		exit(1);
 	}

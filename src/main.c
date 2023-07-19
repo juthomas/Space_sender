@@ -1,5 +1,8 @@
 #include "../inc/sender.h"
 pid_t g_pid;
+// Structure pour les opérations P() et V() sur les sémaphores
+struct sembuf P = {0, -1, SEM_UNDO}; // Opération P (wait)
+struct sembuf V = {0, 1, SEM_UNDO};	 // Opération V (signal)
 
 void usage()
 {
@@ -92,6 +95,27 @@ int main(int argc, char **argv)
 
 	buffer = (t_circular_buffer *)malloc(sizeof(t_circular_buffer));
 
+	// sem_t *semaphore;
+	// semaphore = sem_open(SEM_ID, O_CREAT, 0666, 0);
+	// if (semaphore == SEM_FAILED)
+	// {
+	// 	perror("sem_open");
+	// 	return 1;
+	// }
+	// Création du sémaphore
+	int semid = semget(SEM_KEY, 1, IPC_CREAT | 0666);
+	if (semid == -1)
+	{
+		perror("semget");
+		exit(1);
+	}
+	// Initialisation du sémaphore à 1 (disponible)
+	if (semctl(semid, 0, SETVAL, 1) == -1)
+	{
+		perror("semctl");
+		exit(1);
+	}
+
 	int shmid;
 	struct shmseg *shmp;
 	shmid = shmget(SHM_KEY, sizeof(struct shmseg), 0644 | IPC_CREAT);
@@ -110,7 +134,6 @@ int main(int argc, char **argv)
 		perror("Shared memory attach");
 		return 1;
 	}
-
 
 	int max_steps = SAMPLES_NU;
 	int current_step = 0;
@@ -170,11 +193,13 @@ int main(int argc, char **argv)
 
 		buffer->data[buffer_index].timestamp = time(NULL);
 
+		semop(semid, &P, 1); // Verrouiller le sémaphore
 		shmp->cnt = sizeof(t_circular_buffer);
 		memcpy(shmp->buf, buffer, sizeof(t_circular_buffer));
 		shmp->complete = 0;
+		semop(semid, &V, 1); // Déverrouiller le sémaphore
 
-		printf("Sample n°%d/%d acquired\n", i + 1, SAMPLES_NU);
+		printf("Sample n %d/%d acquired\n", i + 1, SAMPLES_NU);
 		sleep(SAMPLE_RATE);
 	}
 	shmp->complete = 1;
@@ -190,6 +215,7 @@ int main(int argc, char **argv)
 		perror("shmctl");
 		return 1;
 	}
+
 	printf("Writing Process: Complete\n");
 
 	sleep(1);

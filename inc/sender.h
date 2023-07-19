@@ -15,13 +15,15 @@
 
 #include <sys/ipc.h>
 #include <sys/shm.h>
+#include <sys/sem.h>
 
 #include <sys/types.h>
 
 #define SAMPLES_NU 300 // NUMBER OF SAMPLES IN FILES
 #define SAMPLE_RATE 2  // RATE LOOP IN SECONDS
 
-#define SHM_KEY 0x1240
+#define SHM_KEY 0x1240 // Clé d'identification de la mémoire partagée
+#define SEM_KEY 0x1240 // Clé d'identification des sémaphores
 
 enum e_data_type
 {

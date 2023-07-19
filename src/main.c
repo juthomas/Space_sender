@@ -7,7 +7,7 @@ struct sembuf V = {0, 1, SEM_UNDO};	 // Opération V (signal)
 void usage()
 {
 	printf("Usage : ");
-	printf("data_sender \"Path/To/Midi/Folder_Redundancy\" \"Path/To/Midi/Folder\"\n");
+	printf("data_sender \"Path/To/Midi/Folder\" \"Path/To/Midi/Folder_Redundancy\"\n");
 	exit(0);
 }
 

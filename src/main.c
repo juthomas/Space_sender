@@ -64,8 +64,8 @@ int main(int argc, char **argv)
 	}
 	else
 	{
-		midi_file_path = (char *)malloc(sizeof(char) * (sizeof("./Space_MIDI/data_files/") + 1));
-		midi_file_path = strcpy(midi_file_path, "./Space_MIDI/data_files/");
+		midi_file_path = (char *)malloc(sizeof(char) * (sizeof("./Space_MIDI/midi_files/") + 1));
+		midi_file_path = strcpy(midi_file_path, "./Space_MIDI/midi_files/");
 
 		midi_file_path_redundancy = (char *)malloc(sizeof(char) * (sizeof("./Space_MIDI/midi_files_redundancy/") + 1));
 		midi_file_path_redundancy = strcpy(midi_file_path_redundancy, "./Space_MIDI/midi_files_redundancy/");
@@ -80,7 +80,7 @@ int main(int argc, char **argv)
 		/**
 		 * Default path :
 		 * execl("../Space_MIDI/midi_controller", "midi_controller",\
-		 *  "../Space_MIDI/data_files", "../Space_MIDI/midi_files", NULL);
+		 *  "../Space_MIDI/midi_files", "../Space_MIDI/midi_files_redundancy", NULL);
 		 */
 
 		execl("./Space_MIDI/midi_controller", "midi_controller",
@@ -95,13 +95,6 @@ int main(int argc, char **argv)
 
 	buffer = (t_circular_buffer *)malloc(sizeof(t_circular_buffer));
 
-	// sem_t *semaphore;
-	// semaphore = sem_open(SEM_ID, O_CREAT, 0666, 0);
-	// if (semaphore == SEM_FAILED)
-	// {
-	// 	perror("sem_open");
-	// 	return 1;
-	// }
 	// Création du sémaphore
 	int semid = semget(SEM_KEY, 1, IPC_CREAT | 0666);
 	if (semid == -1)
@@ -190,8 +183,7 @@ int main(int argc, char **argv)
 				uint8_t *ptr = (uint8_t *)((uint64_t)&buffer->data[buffer_index] + g_all_data[n - 1][u].offset);
 				uint8_t data = (uint8_t)(g_all_data[n][u].binary);
 				memcpy(ptr, &data, sizeof(uint8_t));
-				
-			}
+						}
 		}
 
 		buffer->data[buffer_index].timestamp = time(NULL);

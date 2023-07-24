@@ -52,8 +52,8 @@ void close_child(int signal)
  */
 int main(int argc, char **argv)
 {
-	char *midi_file_path; // = "../Space_MIDI/data_files";
-	char *midi_file_path_redundancy;
+	char *midi_file_path;			 // Pointeur vers le chemin du dossier des fichiers MIDI
+	char *midi_file_path_redundancy; // Pointeur vers le chemin du dossier de redondance des fichiers MIDI
 
 	if (argc == 3)
 	{
@@ -71,8 +71,11 @@ int main(int argc, char **argv)
 		midi_file_path_redundancy = strcpy(midi_file_path_redundancy, "./Space_MIDI/midi_files_redundancy/");
 	}
 
+	// Création d'un nouveau processus en utilisant la fonction fork()
 	g_pid = fork();
 	printf("PID : %d\n", g_pid);
+
+	// Création des répertoires du chemin du dossier de données (midi_file_path)
 	make_path(midi_file_path, 0755);
 
 	if (g_pid == 0)
@@ -109,6 +112,7 @@ int main(int argc, char **argv)
 		exit(1);
 	}
 
+	// Création et attachement à la mémoire partagée
 	int shmid;
 	struct shmseg *shmp;
 	shmid = shmget(SHM_KEY, sizeof(struct shmseg), 0644 | IPC_CREAT);
@@ -158,9 +162,12 @@ int main(int argc, char **argv)
 
 			if (g_all_data[n - 1][u].data_type == FLOATING)
 			{
+				// Pointeur vers l'emplacement mémoire où stocker les données FLOATING dans le buffer circulaire
 				float *ptr = (float *)((uint64_t)&buffer->data[buffer_index] + g_all_data[n - 1][u].offset);
+				// Calcul de l'interpolation des données FLOATING et copie dans le buffer
 				float data = (float)(g_all_data[n - 1][u].float_data * (1 - duty) + g_all_data[n][u].float_data * duty);
 				memcpy(ptr, &data, sizeof(float));
+				// Calcul de la variation aléatoire et ajout dans le buffer
 				float tmpdelta = g_all_data[n - 1][u].float_delta * (1 - duty) + g_all_data[n][u].float_delta * duty;
 				if (tmpdelta > 0)
 				{
@@ -169,10 +176,13 @@ int main(int argc, char **argv)
 			}
 			else if (g_all_data[n - 1][u].data_type == INTEGER)
 			{
+				// Pointeur vers l'emplacement mémoire où stocker les données INTEGER dans le buffer circulaire
 				uint32_t *ptr = (uint32_t *)((uint64_t)&buffer->data[buffer_index] + g_all_data[n - 1][u].offset);
+				// Calcul de l'interpolation des données INTEGER et copie dans le buffer
 				uint32_t data = (uint32_t)(g_all_data[n - 1][u].int_data * (1 - duty) + g_all_data[n][u].int_data * duty);
 				memcpy(ptr, &data, sizeof(uint32_t));
-				int tmpdelta = (float)g_all_data[n - 1][u].int_delta * (1 - duty) + g_all_data[n][u].int_delta * duty;
+				// Calcul de la variation aléatoire et ajout dans le buffer
+				int tmpdelta = (int)g_all_data[n - 1][u].int_delta * (1 - duty) + g_all_data[n][u].int_delta * duty;
 				if (tmpdelta > 0)
 				{
 					*ptr += (rand() % (tmpdelta * 2)) - tmpdelta;
@@ -180,31 +190,40 @@ int main(int argc, char **argv)
 			}
 			else if (g_all_data[n - 1][u].data_type == BINARY)
 			{
+				// Pointeur vers l'emplacement mémoire où stocker les données BINARY dans le buffer circulaire
 				uint8_t *ptr = (uint8_t *)((uint64_t)&buffer->data[buffer_index] + g_all_data[n - 1][u].offset);
+				// Copie des données BINARY dans le buffer
 				uint8_t data = (uint8_t)(g_all_data[n][u].binary);
 				memcpy(ptr, &data, sizeof(uint8_t));
-						}
+			}
 		}
-
+		// Enregistrement du timestamp dans le buffer circulaire
 		buffer->data[buffer_index].timestamp = time(NULL);
 
 		semop(semid, &P, 1); // Verrouiller le sémaphore
+
+		// Copie du contenu du buffer circulaire dans la mémoire partagée
 		shmp->cnt = sizeof(t_circular_buffer);
 		memcpy(shmp->buf, buffer, sizeof(t_circular_buffer));
 		shmp->complete = 0;
 		semop(semid, &V, 1); // Déverrouiller le sémaphore
 
 		printf("Sample n %d/%d acquired\n", i + 1, SAMPLES_NU);
+		// Pause pour attendre le prochain 'fake' échantillon
 		sleep(SAMPLE_RATE);
-	}
+	}	
+	
+	// Marquage de la fin de la génération des échantillons
 	shmp->complete = 1;
 
+	// Détachement de la mémoire partagée
 	if (shmdt(shmp) == -1)
 	{
 		perror("shmdt");
 		return 1;
 	}
 
+	// Suppression de la mémoire partagée
 	if (shmctl(shmid, IPC_RMID, 0) == -1)
 	{
 		perror("shmctl");

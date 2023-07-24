@@ -166,8 +166,8 @@ int main(int argc, char **argv)
 			if (g_all_data[n - 1][u].data_type == FLOATING)
 			{
 				float *ptr = (float *)((uint64_t)&buffer->data[buffer_index] + g_all_data[n - 1][u].offset);
-
-				*ptr = g_all_data[n - 1][u].float_data * (1 - duty) + g_all_data[n][u].float_data * duty;
+				float data = (float)(g_all_data[n - 1][u].float_data * (1 - duty) + g_all_data[n][u].float_data * duty);
+				memcpy(ptr, &data, sizeof(float));
 				float tmpdelta = g_all_data[n - 1][u].float_delta * (1 - duty) + g_all_data[n][u].float_delta * duty;
 				if (tmpdelta > 0)
 				{
@@ -177,7 +177,8 @@ int main(int argc, char **argv)
 			else if (g_all_data[n - 1][u].data_type == INTEGER)
 			{
 				uint32_t *ptr = (uint32_t *)((uint64_t)&buffer->data[buffer_index] + g_all_data[n - 1][u].offset);
-				*ptr = (float)g_all_data[n - 1][u].int_data * (1 - duty) + g_all_data[n][u].int_data * duty;
+				uint32_t data = (uint32_t)(g_all_data[n - 1][u].int_data * (1 - duty) + g_all_data[n][u].int_data * duty);
+				memcpy(ptr, &data, sizeof(uint32_t));
 				int tmpdelta = (float)g_all_data[n - 1][u].int_delta * (1 - duty) + g_all_data[n][u].int_delta * duty;
 				if (tmpdelta > 0)
 				{
@@ -187,7 +188,9 @@ int main(int argc, char **argv)
 			else if (g_all_data[n - 1][u].data_type == BINARY)
 			{
 				uint8_t *ptr = (uint8_t *)((uint64_t)&buffer->data[buffer_index] + g_all_data[n - 1][u].offset);
-				*ptr = g_all_data[n][u].binary;
+				uint8_t data = (uint8_t)(g_all_data[n][u].binary);
+				memcpy(ptr, &data, sizeof(uint8_t));
+				
 			}
 		}
 

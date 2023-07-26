@@ -15,7 +15,7 @@ or <br/>
 
 `./data_sender` <br/>
 or <br/>
-`./data_sender [path to data files] [path to midi files]` 
+`./data_sender [path to midi folder] [path to midi folder redundancy] ` 
 
 # Modification of the tester configuration
 

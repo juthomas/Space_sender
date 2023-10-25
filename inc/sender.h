@@ -100,6 +100,7 @@ struct shmseg
 
 #define DATAS_SIZE 32
 
+//FERMETURE COUVERCLE 1/3
 //Date : 2023/10/10, Time : 16:54:52
 static const t_data g_all_data_step_1[] = {
 	(t_data){.name = "Photodiode_1", .offset = offsetof(t_sensors, photodiode_1), .data_type = INTEGER, .int_data = 4018, .int_delta = 0},
@@ -127,7 +128,7 @@ static const t_data g_all_data_step_1[] = {
 	(t_data){.name = "3.3v_current", .offset = offsetof(t_sensors, t3_3v_current), .data_type = INTEGER, .int_data = 6, .int_delta = 0},//TODO : Manage negative values
 	(t_data){.name = "Motor_current", .offset = offsetof(t_sensors, motor_current), .data_type = INTEGER, .int_data = 11717, .int_delta = 0},//TODO : Manage negative values
 	(t_data){.name = "Carousel_state", .offset = offsetof(t_sensors, carousel_state), .data_type = INTEGER, .int_data = 0, .int_delta = 0},// 0 - 119
-	(t_data){.name = "Lid_state", .offset = offsetof(t_sensors, lid_state), .data_type = INTEGER, .int_data = 53, .int_delta = 0},// 0 - 53
+	(t_data){.name = "Lid_state", .offset = offsetof(t_sensors, lid_state), .data_type = INTEGER, .int_data = 0, .int_delta = 0},// 0 - 53
 	(t_data){.name = "Organ_1", .offset = offsetof(t_sensors, organ_1), .data_type = INTEGER, .int_data = 1519, .int_delta = 0},
 	(t_data){.name = "Organ_2", .offset = offsetof(t_sensors, organ_2), .data_type = INTEGER, .int_data = 2325, .int_delta = 0},
 	(t_data){.name = "Organ_3", .offset = offsetof(t_sensors, organ_3), .data_type = INTEGER, .int_data = 1651, .int_delta = 0},
@@ -135,6 +136,7 @@ static const t_data g_all_data_step_1[] = {
 	(t_data){.name = "Organ_5", .offset = offsetof(t_sensors, organ_5), .data_type = INTEGER, .int_data = 2639, .int_delta = 0},
 	(t_data){.name = "Organ_6", .offset = offsetof(t_sensors, organ_6), .data_type = INTEGER, .int_data = 2976, .int_delta = 0}};
 
+//FERMETURE COUVERCLE 2/3
 //Date : 2023/10/10, Time : 17:05:02
 static const t_data g_all_data_step_2[] = {
 	(t_data){.name = "Photodiode_1", .offset = offsetof(t_sensors, photodiode_1), .data_type = INTEGER, .int_data = 4018, .int_delta = 0},
@@ -161,8 +163,8 @@ static const t_data g_all_data_step_2[] = {
 	(t_data){.name = "5v_current", .offset = offsetof(t_sensors, t5v_current), .data_type = INTEGER, .int_data = 23, .int_delta = 0},//TODO : Manage negative values
 	(t_data){.name = "3.3v_current", .offset = offsetof(t_sensors, t3_3v_current), .data_type = INTEGER, .int_data = 7, .int_delta = 0},//TODO : Manage negative values
 	(t_data){.name = "Motor_current", .offset = offsetof(t_sensors, motor_current), .data_type = INTEGER, .int_data = 12254, .int_delta = 0},//TODO : Manage negative values
-	(t_data){.name = "Carousel_state", .offset = offsetof(t_sensors, carousel_state), .data_type = INTEGER, .int_data = 0, .int_delta = 0},// 0 - 119
-	(t_data){.name = "Lid_state", .offset = offsetof(t_sensors, lid_state), .data_type = INTEGER, .int_data = 53, .int_delta = 0},// 0 - 53
+	(t_data){.name = "Carousel_state", .offset = offsetof(t_sensors, carousel_state), .data_type = INTEGER, .int_data = 60, .int_delta = 0},// 0 - 119
+	(t_data){.name = "Lid_state", .offset = offsetof(t_sensors, lid_state), .data_type = INTEGER, .int_data = 0, .int_delta = 0},// 0 - 53
 	(t_data){.name = "Organ_1", .offset = offsetof(t_sensors, organ_1), .data_type = INTEGER, .int_data = 1519, .int_delta = 0},
 	(t_data){.name = "Organ_2", .offset = offsetof(t_sensors, organ_2), .data_type = INTEGER, .int_data = 2326, .int_delta = 0},
 	(t_data){.name = "Organ_3", .offset = offsetof(t_sensors, organ_3), .data_type = INTEGER, .int_data = 1652, .int_delta = 0},
@@ -170,6 +172,7 @@ static const t_data g_all_data_step_2[] = {
 	(t_data){.name = "Organ_5", .offset = offsetof(t_sensors, organ_5), .data_type = INTEGER, .int_data = 2638, .int_delta = 0},
 	(t_data){.name = "Organ_6", .offset = offsetof(t_sensors, organ_6), .data_type = INTEGER, .int_data = 2974, .int_delta = 0}};
 
+//FERMETURE COUVERCLE 3/3
 //Date : 2023/10/10, Time : 17:15:12
 static const t_data g_all_data_step_3[] = {
 	(t_data){.name = "Photodiode_1", .offset = offsetof(t_sensors, photodiode_1), .data_type = INTEGER, .int_data = 12, .int_delta = 0},
@@ -196,8 +199,8 @@ static const t_data g_all_data_step_3[] = {
 	(t_data){.name = "5v_current", .offset = offsetof(t_sensors, t5v_current), .data_type = INTEGER, .int_data = 23, .int_delta = 0},//TODO : Manage negative values
 	(t_data){.name = "3.3v_current", .offset = offsetof(t_sensors, t3_3v_current), .data_type = INTEGER, .int_data = 7, .int_delta = 0},//TODO : Manage negative values
 	(t_data){.name = "Motor_current", .offset = offsetof(t_sensors, motor_current), .data_type = INTEGER, .int_data = 12381, .int_delta = 0},//TODO : Manage negative values
-	(t_data){.name = "Carousel_state", .offset = offsetof(t_sensors, carousel_state), .data_type = INTEGER, .int_data = 0, .int_delta = 0},// 0 - 119
-	(t_data){.name = "Lid_state", .offset = offsetof(t_sensors, lid_state), .data_type = INTEGER, .int_data = 53, .int_delta = 0},// 0 - 53
+	(t_data){.name = "Carousel_state", .offset = offsetof(t_sensors, carousel_state), .data_type = INTEGER, .int_data = 119, .int_delta = 0},// 0 - 119
+	(t_data){.name = "Lid_state", .offset = offsetof(t_sensors, lid_state), .data_type = INTEGER, .int_data = 0, .int_delta = 0},// 0 - 53
 	(t_data){.name = "Organ_1", .offset = offsetof(t_sensors, organ_1), .data_type = INTEGER, .int_data = 1517, .int_delta = 0},
 	(t_data){.name = "Organ_2", .offset = offsetof(t_sensors, organ_2), .data_type = INTEGER, .int_data = 2325, .int_delta = 0},
 	(t_data){.name = "Organ_3", .offset = offsetof(t_sensors, organ_3), .data_type = INTEGER, .int_data = 1651, .int_delta = 0},
@@ -555,7 +558,7 @@ static const t_data g_all_data_step_13[] = {
 	(t_data){.name = "Organ_5", .offset = offsetof(t_sensors, organ_5), .data_type = INTEGER, .int_data = 2638, .int_delta = 0},
 	(t_data){.name = "Organ_6", .offset = offsetof(t_sensors, organ_6), .data_type = INTEGER, .int_data = 2973, .int_delta = 0}};
 
-//FERMETURE COUVERCLE 1/5
+//FERMETURE COUVERCLE 1/4
 //Date : 2023/10/10, Time : 19:07:02
 static const t_data g_all_data_step_14[] = {
 	(t_data){.name = "Photodiode_1", .offset = offsetof(t_sensors, photodiode_1), .data_type = INTEGER, .int_data = 11, .int_delta = 0},
@@ -591,7 +594,6 @@ static const t_data g_all_data_step_14[] = {
 	(t_data){.name = "Organ_5", .offset = offsetof(t_sensors, organ_5), .data_type = INTEGER, .int_data = 2637, .int_delta = 0},
 	(t_data){.name = "Organ_6", .offset = offsetof(t_sensors, organ_6), .data_type = INTEGER, .int_data = 2973, .int_delta = 0}};
 
-//FERMETURE COUVERCLE 2/5
 //Date : 2023/10/10, Time : 19:17:12
 static const t_data g_all_data_step_15[] = {
 	(t_data){.name = "Photodiode_1", .offset = offsetof(t_sensors, photodiode_1), .data_type = INTEGER, .int_data = 12, .int_delta = 0},
@@ -618,8 +620,8 @@ static const t_data g_all_data_step_15[] = {
 	(t_data){.name = "5v_current", .offset = offsetof(t_sensors, t5v_current), .data_type = INTEGER, .int_data = 22, .int_delta = 0},//TODO : Manage negative values
 	(t_data){.name = "3.3v_current", .offset = offsetof(t_sensors, t3_3v_current), .data_type = INTEGER, .int_data = 7, .int_delta = 0},//TODO : Manage negative values
 	(t_data){.name = "Motor_current", .offset = offsetof(t_sensors, motor_current), .data_type = INTEGER, .int_data = 0, .int_delta = 0},//TODO : Manage negative values
-	(t_data){.name = "Carousel_state", .offset = offsetof(t_sensors, carousel_state), .data_type = INTEGER, .int_data = 30, .int_delta = 0},// 0 - 119
-	(t_data){.name = "Lid_state", .offset = offsetof(t_sensors, lid_state), .data_type = INTEGER, .int_data = 0, .int_delta = 0},// 0 - 53
+	(t_data){.name = "Carousel_state", .offset = offsetof(t_sensors, carousel_state), .data_type = INTEGER, .int_data = 0, .int_delta = 0},// 0 - 119
+	(t_data){.name = "Lid_state", .offset = offsetof(t_sensors, lid_state), .data_type = INTEGER, .int_data = 53, .int_delta = 0},// 0 - 53
 	(t_data){.name = "Organ_1", .offset = offsetof(t_sensors, organ_1), .data_type = INTEGER, .int_data = 1516, .int_delta = 0},
 	(t_data){.name = "Organ_2", .offset = offsetof(t_sensors, organ_2), .data_type = INTEGER, .int_data = 2325, .int_delta = 0},
 	(t_data){.name = "Organ_3", .offset = offsetof(t_sensors, organ_3), .data_type = INTEGER, .int_data = 1651, .int_delta = 0},
@@ -627,7 +629,6 @@ static const t_data g_all_data_step_15[] = {
 	(t_data){.name = "Organ_5", .offset = offsetof(t_sensors, organ_5), .data_type = INTEGER, .int_data = 2637, .int_delta = 0},
 	(t_data){.name = "Organ_6", .offset = offsetof(t_sensors, organ_6), .data_type = INTEGER, .int_data = 2972, .int_delta = 0}};
 
-//FERMETURE COUVERCLE 3/5
 //Date : 2023/10/10, Time : 19:27:22
 static const t_data g_all_data_step_16[] = {
 	(t_data){.name = "Photodiode_1", .offset = offsetof(t_sensors, photodiode_1), .data_type = INTEGER, .int_data = 4017, .int_delta = 0},
@@ -654,8 +655,8 @@ static const t_data g_all_data_step_16[] = {
 	(t_data){.name = "5v_current", .offset = offsetof(t_sensors, t5v_current), .data_type = INTEGER, .int_data = 22, .int_delta = 0},//TODO : Manage negative values
 	(t_data){.name = "3.3v_current", .offset = offsetof(t_sensors, t3_3v_current), .data_type = INTEGER, .int_data = 7, .int_delta = 0},//TODO : Manage negative values
 	(t_data){.name = "Motor_current", .offset = offsetof(t_sensors, motor_current), .data_type = INTEGER, .int_data = 0, .int_delta = 0},//TODO : Manage negative values
-	(t_data){.name = "Carousel_state", .offset = offsetof(t_sensors, carousel_state), .data_type = INTEGER, .int_data = 64, .int_delta = 0},// 0 - 119
-	(t_data){.name = "Lid_state", .offset = offsetof(t_sensors, lid_state), .data_type = INTEGER, .int_data = 0, .int_delta = 0},// 0 - 53
+	(t_data){.name = "Carousel_state", .offset = offsetof(t_sensors, carousel_state), .data_type = INTEGER, .int_data = 0, .int_delta = 0},// 0 - 119
+	(t_data){.name = "Lid_state", .offset = offsetof(t_sensors, lid_state), .data_type = INTEGER, .int_data = 53, .int_delta = 0},// 0 - 53
 	(t_data){.name = "Organ_1", .offset = offsetof(t_sensors, organ_1), .data_type = INTEGER, .int_data = 1515, .int_delta = 0},
 	(t_data){.name = "Organ_2", .offset = offsetof(t_sensors, organ_2), .data_type = INTEGER, .int_data = 2325, .int_delta = 0},
 	(t_data){.name = "Organ_3", .offset = offsetof(t_sensors, organ_3), .data_type = INTEGER, .int_data = 1651, .int_delta = 0},
@@ -663,7 +664,6 @@ static const t_data g_all_data_step_16[] = {
 	(t_data){.name = "Organ_5", .offset = offsetof(t_sensors, organ_5), .data_type = INTEGER, .int_data = 2638, .int_delta = 0},
 	(t_data){.name = "Organ_6", .offset = offsetof(t_sensors, organ_6), .data_type = INTEGER, .int_data = 2971, .int_delta = 0}};
 
-//FERMETURE COUVERCLE 4/5
 //Date : 2023/10/10, Time : 19:37:32
 static const t_data g_all_data_step_17[] = {
 	(t_data){.name = "Photodiode_1", .offset = offsetof(t_sensors, photodiode_1), .data_type = INTEGER, .int_data = 4018, .int_delta = 0},
@@ -690,8 +690,8 @@ static const t_data g_all_data_step_17[] = {
 	(t_data){.name = "5v_current", .offset = offsetof(t_sensors, t5v_current), .data_type = INTEGER, .int_data = 22, .int_delta = 0},//TODO : Manage negative values
 	(t_data){.name = "3.3v_current", .offset = offsetof(t_sensors, t3_3v_current), .data_type = INTEGER, .int_data = 6, .int_delta = 0},//TODO : Manage negative values
 	(t_data){.name = "Motor_current", .offset = offsetof(t_sensors, motor_current), .data_type = INTEGER, .int_data = 0, .int_delta = 0},//TODO : Manage negative values
-	(t_data){.name = "Carousel_state", .offset = offsetof(t_sensors, carousel_state), .data_type = INTEGER, .int_data = 96, .int_delta = 0},// 0 - 119
-	(t_data){.name = "Lid_state", .offset = offsetof(t_sensors, lid_state), .data_type = INTEGER, .int_data = 0, .int_delta = 0},// 0 - 53
+	(t_data){.name = "Carousel_state", .offset = offsetof(t_sensors, carousel_state), .data_type = INTEGER, .int_data = 0, .int_delta = 0},// 0 - 119
+	(t_data){.name = "Lid_state", .offset = offsetof(t_sensors, lid_state), .data_type = INTEGER, .int_data = 53, .int_delta = 0},// 0 - 53
 	(t_data){.name = "Organ_1", .offset = offsetof(t_sensors, organ_1), .data_type = INTEGER, .int_data = 1516, .int_delta = 0},
 	(t_data){.name = "Organ_2", .offset = offsetof(t_sensors, organ_2), .data_type = INTEGER, .int_data = 2325, .int_delta = 0},
 	(t_data){.name = "Organ_3", .offset = offsetof(t_sensors, organ_3), .data_type = INTEGER, .int_data = 1653, .int_delta = 0},
@@ -699,7 +699,6 @@ static const t_data g_all_data_step_17[] = {
 	(t_data){.name = "Organ_5", .offset = offsetof(t_sensors, organ_5), .data_type = INTEGER, .int_data = 2637, .int_delta = 0},
 	(t_data){.name = "Organ_6", .offset = offsetof(t_sensors, organ_6), .data_type = INTEGER, .int_data = 2971, .int_delta = 0}};
 
-//FERMETURE COUVERCLE 5/5
 //Date : 2023/10/10, Time : 19:47:42
 static const t_data g_all_data_step_18[] = {
 	(t_data){.name = "Photodiode_1", .offset = offsetof(t_sensors, photodiode_1), .data_type = INTEGER, .int_data = 4018, .int_delta = 0},
@@ -726,8 +725,8 @@ static const t_data g_all_data_step_18[] = {
 	(t_data){.name = "5v_current", .offset = offsetof(t_sensors, t5v_current), .data_type = INTEGER, .int_data = 22, .int_delta = 0},//TODO : Manage negative values
 	(t_data){.name = "3.3v_current", .offset = offsetof(t_sensors, t3_3v_current), .data_type = INTEGER, .int_data = 7, .int_delta = 0},//TODO : Manage negative values
 	(t_data){.name = "Motor_current", .offset = offsetof(t_sensors, motor_current), .data_type = INTEGER, .int_data = 0, .int_delta = 0},//TODO : Manage negative values
-	(t_data){.name = "Carousel_state", .offset = offsetof(t_sensors, carousel_state), .data_type = INTEGER, .int_data = 119, .int_delta = 0},// 0 - 119
-	(t_data){.name = "Lid_state", .offset = offsetof(t_sensors, lid_state), .data_type = INTEGER, .int_data = 0, .int_delta = 0},// 0 - 53
+	(t_data){.name = "Carousel_state", .offset = offsetof(t_sensors, carousel_state), .data_type = INTEGER, .int_data = 0, .int_delta = 0},// 0 - 119
+	(t_data){.name = "Lid_state", .offset = offsetof(t_sensors, lid_state), .data_type = INTEGER, .int_data = 53, .int_delta = 0},// 0 - 53
 	(t_data){.name = "Organ_1", .offset = offsetof(t_sensors, organ_1), .data_type = INTEGER, .int_data = 1516, .int_delta = 0},
 	(t_data){.name = "Organ_2", .offset = offsetof(t_sensors, organ_2), .data_type = INTEGER, .int_data = 2323, .int_delta = 0},
 	(t_data){.name = "Organ_3", .offset = offsetof(t_sensors, organ_3), .data_type = INTEGER, .int_data = 1651, .int_delta = 0},
@@ -3675,6 +3674,7 @@ static const t_data g_all_data_step_102[] = {
 	(t_data){.name = "Organ_5", .offset = offsetof(t_sensors, organ_5), .data_type = INTEGER, .int_data = 2634, .int_delta = 0},
 	(t_data){.name = "Organ_6", .offset = offsetof(t_sensors, organ_6), .data_type = INTEGER, .int_data = 2966, .int_delta = 0}};
 
+//FERMETURE COUVERCLE 1/3
 //Date : 2023/10/11, Time : 10:30:13
 static const t_data g_all_data_step_103[] = {
 	(t_data){.name = "Photodiode_1", .offset = offsetof(t_sensors, photodiode_1), .data_type = INTEGER, .int_data = 4017, .int_delta = 0},
@@ -3702,7 +3702,7 @@ static const t_data g_all_data_step_103[] = {
 	(t_data){.name = "3.3v_current", .offset = offsetof(t_sensors, t3_3v_current), .data_type = INTEGER, .int_data = 6, .int_delta = 0},//TODO : Manage negative values
 	(t_data){.name = "Motor_current", .offset = offsetof(t_sensors, motor_current), .data_type = INTEGER, .int_data = 12960, .int_delta = 0},//TODO : Manage negative values
 	(t_data){.name = "Carousel_state", .offset = offsetof(t_sensors, carousel_state), .data_type = INTEGER, .int_data = 0, .int_delta = 0},// 0 - 119
-	(t_data){.name = "Lid_state", .offset = offsetof(t_sensors, lid_state), .data_type = INTEGER, .int_data = 53, .int_delta = 0},// 0 - 53
+	(t_data){.name = "Lid_state", .offset = offsetof(t_sensors, lid_state), .data_type = INTEGER, .int_data = 0, .int_delta = 0},// 0 - 53
 	(t_data){.name = "Organ_1", .offset = offsetof(t_sensors, organ_1), .data_type = INTEGER, .int_data = 1515, .int_delta = 0},
 	(t_data){.name = "Organ_2", .offset = offsetof(t_sensors, organ_2), .data_type = INTEGER, .int_data = 2321, .int_delta = 0},
 	(t_data){.name = "Organ_3", .offset = offsetof(t_sensors, organ_3), .data_type = INTEGER, .int_data = 1650, .int_delta = 0},
@@ -3710,6 +3710,7 @@ static const t_data g_all_data_step_103[] = {
 	(t_data){.name = "Organ_5", .offset = offsetof(t_sensors, organ_5), .data_type = INTEGER, .int_data = 2634, .int_delta = 0},
 	(t_data){.name = "Organ_6", .offset = offsetof(t_sensors, organ_6), .data_type = INTEGER, .int_data = 2966, .int_delta = 0}};
 
+//FERMETURE COUVERCLE 2/3
 //Date : 2023/10/11, Time : 10:40:23
 static const t_data g_all_data_step_104[] = {
 	(t_data){.name = "Photodiode_1", .offset = offsetof(t_sensors, photodiode_1), .data_type = INTEGER, .int_data = 4017, .int_delta = 0},
@@ -3736,8 +3737,8 @@ static const t_data g_all_data_step_104[] = {
 	(t_data){.name = "5v_current", .offset = offsetof(t_sensors, t5v_current), .data_type = INTEGER, .int_data = 22, .int_delta = 0},//TODO : Manage negative values
 	(t_data){.name = "3.3v_current", .offset = offsetof(t_sensors, t3_3v_current), .data_type = INTEGER, .int_data = 7, .int_delta = 0},//TODO : Manage negative values
 	(t_data){.name = "Motor_current", .offset = offsetof(t_sensors, motor_current), .data_type = INTEGER, .int_data = 12537, .int_delta = 0},//TODO : Manage negative values
-	(t_data){.name = "Carousel_state", .offset = offsetof(t_sensors, carousel_state), .data_type = INTEGER, .int_data = 0, .int_delta = 0},// 0 - 119
-	(t_data){.name = "Lid_state", .offset = offsetof(t_sensors, lid_state), .data_type = INTEGER, .int_data = 53, .int_delta = 0},// 0 - 53
+	(t_data){.name = "Carousel_state", .offset = offsetof(t_sensors, carousel_state), .data_type = INTEGER, .int_data = 60, .int_delta = 0},// 0 - 119
+	(t_data){.name = "Lid_state", .offset = offsetof(t_sensors, lid_state), .data_type = INTEGER, .int_data = 0, .int_delta = 0},// 0 - 53
 	(t_data){.name = "Organ_1", .offset = offsetof(t_sensors, organ_1), .data_type = INTEGER, .int_data = 1516, .int_delta = 0},
 	(t_data){.name = "Organ_2", .offset = offsetof(t_sensors, organ_2), .data_type = INTEGER, .int_data = 2323, .int_delta = 0},
 	(t_data){.name = "Organ_3", .offset = offsetof(t_sensors, organ_3), .data_type = INTEGER, .int_data = 1649, .int_delta = 0},
@@ -3745,6 +3746,7 @@ static const t_data g_all_data_step_104[] = {
 	(t_data){.name = "Organ_5", .offset = offsetof(t_sensors, organ_5), .data_type = INTEGER, .int_data = 2634, .int_delta = 0},
 	(t_data){.name = "Organ_6", .offset = offsetof(t_sensors, organ_6), .data_type = INTEGER, .int_data = 2967, .int_delta = 0}};
 
+//FERMETURE COUVERCLE 3/3
 //Date : 2023/10/11, Time : 10:50:33
 static const t_data g_all_data_step_105[] = {
 	(t_data){.name = "Photodiode_1", .offset = offsetof(t_sensors, photodiode_1), .data_type = INTEGER, .int_data = 4017, .int_delta = 0},
@@ -3771,8 +3773,8 @@ static const t_data g_all_data_step_105[] = {
 	(t_data){.name = "5v_current", .offset = offsetof(t_sensors, t5v_current), .data_type = INTEGER, .int_data = 22, .int_delta = 0},//TODO : Manage negative values
 	(t_data){.name = "3.3v_current", .offset = offsetof(t_sensors, t3_3v_current), .data_type = INTEGER, .int_data = 7, .int_delta = 0},//TODO : Manage negative values
 	(t_data){.name = "Motor_current", .offset = offsetof(t_sensors, motor_current), .data_type = INTEGER, .int_data = 12599, .int_delta = 0},//TODO : Manage negative values
-	(t_data){.name = "Carousel_state", .offset = offsetof(t_sensors, carousel_state), .data_type = INTEGER, .int_data = 0, .int_delta = 0},// 0 - 119
-	(t_data){.name = "Lid_state", .offset = offsetof(t_sensors, lid_state), .data_type = INTEGER, .int_data = 53, .int_delta = 0},// 0 - 53
+	(t_data){.name = "Carousel_state", .offset = offsetof(t_sensors, carousel_state), .data_type = INTEGER, .int_data = 119, .int_delta = 0},// 0 - 119
+	(t_data){.name = "Lid_state", .offset = offsetof(t_sensors, lid_state), .data_type = INTEGER, .int_data = 0, .int_delta = 0},// 0 - 53
 	(t_data){.name = "Organ_1", .offset = offsetof(t_sensors, organ_1), .data_type = INTEGER, .int_data = 1515, .int_delta = 0},
 	(t_data){.name = "Organ_2", .offset = offsetof(t_sensors, organ_2), .data_type = INTEGER, .int_data = 2323, .int_delta = 0},
 	(t_data){.name = "Organ_3", .offset = offsetof(t_sensors, organ_3), .data_type = INTEGER, .int_data = 1649, .int_delta = 0},

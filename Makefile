@@ -17,7 +17,7 @@ WRITE_FILES_DIR = write_files
 
 ## Compilating Utilities
 # FAST = -Ofast
-DEBUG = -g -fsanitize=address
+# DEBUG = -g -fsanitize=address
 WARNINGS = -Wall -Wextra# -Werror
 FLAGS = $(WARNINGS) $(FAST) $(DEBUG)# -D_REENTRANT
 

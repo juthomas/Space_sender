@@ -20,7 +20,8 @@ for index, row in df.iterrows():
     # print("Row data:", row)
     # print("Accès à une colonne spécifique (par exemple 'nom_de_la_colonne'):", row['Time'])
     list_of_steps += f"g_all_data_step_{index + starting_index}, "
-    print(f"static const t_data g_all_data_step_{index + starting_index}[] =  {{")
+    print(f"//Date : {row['Date']}, Time : {row['Time']}")
+    print(f"static const t_data g_all_data_step_{index + starting_index}[] = {{")
     print(f"	(t_data){{.name = \"Photodiode_1\", .offset = offsetof(t_sensors, photodiode_1), .data_type = INTEGER, .int_data = {row['PD0 (V)']}, .int_delta = 0}},")
     print(f"	(t_data){{.name = \"Photodiode_2\", .offset = offsetof(t_sensors, photodiode_2), .data_type = INTEGER, .int_data = {row['PD1 (V)']}, .int_delta = 0}},")
     print(f"	(t_data){{.name = \"Photodiode_3\", .offset = offsetof(t_sensors, photodiode_3), .data_type = INTEGER, .int_data = {row['PD2 (V)']}, .int_delta = 0}},")
@@ -45,8 +46,8 @@ for index, row in df.iterrows():
     print(f"	(t_data){{.name = \"5v_current\", .offset = offsetof(t_sensors, t5v_current), .data_type = INTEGER, .int_data = {row['I INA 5V (mA)']}, .int_delta = 0}},//TODO : Manage negative values")#TODO : Manage negative values
     print(f"	(t_data){{.name = \"3.3v_current\", .offset = offsetof(t_sensors, t3_3v_current), .data_type = INTEGER, .int_data = {row['I INA 3V3 (mA)']}, .int_delta = 0}},//TODO : Manage negative values")#TODO : Manage negative values
     print(f"	(t_data){{.name = \"Motor_current\", .offset = offsetof(t_sensors, motor_current), .data_type = INTEGER, .int_data = {row['I INA MOTORS (mA)']}, .int_delta = 0}},//TODO : Manage negative values")#TODO : Manage negative values
-    print(f"	(t_data){{.name = \"Carousel_state\", .offset = offsetof(t_sensors, carousel_state), .data_type = INTEGER, .int_data = 0, .int_delta = 0}},")
-    print(f"	(t_data){{.name = \"Lid_state\", .offset = offsetof(t_sensors, lid_state), .data_type = INTEGER, .int_data = 0, .int_delta = 0}},")
+    print(f"	(t_data){{.name = \"Carousel_state\", .offset = offsetof(t_sensors, carousel_state), .data_type = INTEGER, .int_data = 0, .int_delta = 0}},// 0 - 119")
+    print(f"	(t_data){{.name = \"Lid_state\", .offset = offsetof(t_sensors, lid_state), .data_type = INTEGER, .int_data = 0, .int_delta = 0}},// 0 - 53")
     print(f"	(t_data){{.name = \"Organ_1\", .offset = offsetof(t_sensors, organ_1), .data_type = INTEGER, .int_data = {row['POT1']}, .int_delta = 0}},")
     print(f"	(t_data){{.name = \"Organ_2\", .offset = offsetof(t_sensors, organ_2), .data_type = INTEGER, .int_data = {row['POT2']}, .int_delta = 0}},")
     print(f"	(t_data){{.name = \"Organ_3\", .offset = offsetof(t_sensors, organ_3), .data_type = INTEGER, .int_data = {row['POT3']}, .int_delta = 0}},")

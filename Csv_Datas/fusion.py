@@ -39,4 +39,4 @@ df_final = df_final.sort_values(by='Time')
 df_final['Line'] = df_final.index
 
 # Enregistrer le DataFrame fusionné dans un nouveau fichier CSV
-df_final.to_csv(output, index=False)
+df_final.to_csv(output, index=False, sep="; ")

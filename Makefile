@@ -23,7 +23,10 @@ FLAGS = $(WARNINGS) $(FAST) $(DEBUG)# -D_REENTRANT
 
 #OS X, the math library is part of libSystem
 #Warning for -lm flag is normal on OS X
-INC = $(INC_DIR:%=-I./%) -lm 
+
+LIBS = -lm
+
+INC = $(INC_DIR:%=-I./%)
 
 # CC = clang $(FLAGS) $(INC)
 CC = gcc $(FLAGS) $(INC)
@@ -66,7 +69,7 @@ $(NAME): $(OBJ_DIRS) $(SRC) $(INCLUDES)
 	@make -C ./Space_MIDI
 	@$(MAKE) -s -j $(OBJ)
 	@echo "$(COLOR)Objects \033[100D\033[40C\0033[1;32m[Created]\0033[1;37m"
-	@$(CC) $(OBJ) -o $@
+	@$(CC) $(OBJ) -o $@ $(LIBS) 
 	@echo "$(COLOR)$(NAME) \033[100D\033[40C\0033[1;32m[Created]\0033[1;37m"
 
 clean:

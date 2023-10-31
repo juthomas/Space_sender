@@ -22,7 +22,11 @@
 //21h50
 //1260 + 50 => 1310
 //78 600 seconds => 7 860 Samples every 10 secs 
-#define SAMPLES_NU 7860 // NUMBER OF SAMPLES IN FILES
+
+// #define SAMPLES_NU 7860 // NUMBER OF SAMPLES IN FILES * 1319/1450
+
+#define SAMPLES_NU 7150 // NUMBER OF SAMPLES IN FILES
+
 #define SAMPLE_RATE 10  // RATE LOOP IN SECONDS
 
 #define SHM_KEY 0x1240 // Clé d'identification de la mémoire partagée
